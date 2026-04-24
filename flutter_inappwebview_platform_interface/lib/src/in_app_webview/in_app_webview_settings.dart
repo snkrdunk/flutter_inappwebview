@@ -1023,6 +1023,18 @@ as it can cause framerate drops on animations in Android 9 and lower (see [Hybri
   ])
   Set<String>? requestedWithHeaderOriginAllowList;
 
+  ///Set to `true` to enable the Payment Request API in the WebView, required
+  ///to use Google Pay inside a WebView without triggering OR_BIBED_15.
+  ///Requires androidx.webkit 1.14.0+ and Android WebView 137+.
+  ///The default value is `false`.
+  @SupportedPlatforms(platforms: [
+    AndroidPlatform(
+        apiName: "WebSettingsCompat.setPaymentRequestEnabled",
+        apiUrl:
+            "https://developer.android.com/reference/androidx/webkit/WebSettingsCompat#setPaymentRequestEnabled(android.webkit.WebSettings,boolean)")
+  ])
+  bool? paymentRequestEnabled;
+
   ///Set to `true` to disable the bouncing of the WebView when the scrolling has reached an edge of the content. The default value is `false`.
   @SupportedPlatforms(platforms: [IOSPlatform()])
   bool? disallowOverScroll;
@@ -1747,6 +1759,7 @@ as it can cause framerate drops on animations in Android 9 and lower (see [Hybri
     this.enterpriseAuthenticationAppLinkPolicyEnabled = true,
     this.defaultVideoPoster,
     this.requestedWithHeaderOriginAllowList,
+    this.paymentRequestEnabled = false,
     this.disallowOverScroll = false,
     this.enableViewportScale = false,
     this.suppressesIncrementalRendering = false,
