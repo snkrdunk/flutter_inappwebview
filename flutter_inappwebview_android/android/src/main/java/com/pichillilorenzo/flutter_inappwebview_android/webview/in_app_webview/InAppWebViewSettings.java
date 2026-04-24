@@ -133,6 +133,8 @@ public class InAppWebViewSettings implements ISettings<InAppWebViewInterface> {
   public byte[] defaultVideoPoster;
   @Nullable
   public Set<String> requestedWithHeaderOriginAllowList;
+  @Nullable
+  public Boolean paymentRequestEnabled;
 
   @NonNull
   @Override
@@ -412,6 +414,9 @@ public class InAppWebViewSettings implements ISettings<InAppWebViewInterface> {
         case "requestedWithHeaderOriginAllowList":
           requestedWithHeaderOriginAllowList = new HashSet<>((List<String>) value);
           break;
+        case "paymentRequestEnabled":
+          paymentRequestEnabled = (Boolean) value;
+          break;
       }
     }
 
@@ -511,6 +516,7 @@ public class InAppWebViewSettings implements ISettings<InAppWebViewInterface> {
     settings.put("defaultVideoPoster", defaultVideoPoster);
     settings.put("requestedWithHeaderOriginAllowList",
             requestedWithHeaderOriginAllowList != null ? new ArrayList<>(requestedWithHeaderOriginAllowList) : null);
+    settings.put("paymentRequestEnabled", paymentRequestEnabled);
     return settings;
   }
 
